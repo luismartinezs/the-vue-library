@@ -1,3 +1,5 @@
+https://codepen.io/vsharma20v/pen/xxZgVVE
+
 <template>
   <p class="paragraph" :class="{ 'dropcaps': dropcaps }">{{ text }}</p>
 </template>

@@ -1,3 +1,5 @@
+https://codepen.io/ykadosh/pen/zYNxVKr
+
 <template>
   <div class="background-wrapper" :class="options.type">
     <div v-if="options.grid" class="grid"></div>

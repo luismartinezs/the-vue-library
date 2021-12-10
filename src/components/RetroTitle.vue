@@ -1,3 +1,5 @@
+https://codepen.io/ykadosh/pen/zYNxVKr
+
 <template>
   <h1 class="retro-title" :class="{star}">
     <span>{{title}}</span>
