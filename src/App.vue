@@ -14,6 +14,9 @@
         text="The practice of using a large letter to mark the start of a text has been around for almost two thousand years. Illustrated caps increased usability by marking important passages and guiding readers through the text."
       />
     </div>
+    <div>
+      <DesignTitle />
+    </div>
   </div>
 </template>
 
@@ -25,6 +28,7 @@ import RetroTitle from "@/components/RetroTitle.vue";
 import RetroSubtitle from "@/components/RetroSubtitle.vue";
 import BackgroundWrapper from "@/components/BackgroundWrapper.vue";
 import VParagraph from '@/components/VParagraph.vue';
+import DesignTitle from '@/components/DesignTitle.vue';
 
 const bgOptions = ref({
   type: 'retro',
@@ -37,18 +41,18 @@ const bgOptions = ref({
 #app {
   width: 100%;
   height: 100%;
-  margin: 0;
-  overflow: hidden;
   margin: 1rem;
   .content {
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
     & > * {
       width: 30rem;
       height: 30rem;
-      border: 1px solid black;
+      border: 1px solid rgb(207, 207, 207);
       border-radius: 1rem;
+      overflow: hidden;
     }
     &-wrapper {
       padding: 2rem;
