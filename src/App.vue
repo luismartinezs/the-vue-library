@@ -17,6 +17,9 @@
     <div>
       <DesignTitle />
     </div>
+    <div>
+      <MultiColorGradients />
+    </div>
   </div>
 </template>
 
@@ -29,6 +32,7 @@ import RetroSubtitle from "@/components/RetroSubtitle.vue";
 import BackgroundWrapper from "@/components/BackgroundWrapper.vue";
 import VParagraph from '@/components/VParagraph.vue';
 import DesignTitle from '@/components/DesignTitle.vue';
+import MultiColorGradients from '@/components/MultiColorGradients.vue';
 
 const bgOptions = ref({
   type: 'retro',
