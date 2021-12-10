@@ -1,0 +1,86 @@
+<template>
+  <div class="background-wrapper" :class="options.type">
+    <div v-if="options.grid" class="grid"></div>
+    <div v-if="options.lines" class="lines"></div>
+
+    <slot></slot>
+  </div>
+</template>
+
+<script setup>
+const props = defineProps({
+  options: {
+    type: Object,
+    default: () => ({
+      type: 'retro',
+      lines: true,
+      grid: true
+    })
+  }
+});
+</script>
+
+<style lang="scss">
+.background-wrapper {
+  &.retro {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: radial-gradient(rgba(#7600bf, 0.5) 0%, transparent 70%),
+      linear-gradient(#0b161e 40%, #202076 70%);
+    perspective: 700px;
+    font-size: clamp(10px, 2%, 20px);
+    .grid {
+      $main: #7d41e6;
+      $glow: rgba(#2e26ff, 0.4);
+      background: linear-gradient(
+          transparent 65%,
+          $glow 75%,
+          $main 80%,
+          $glow 85%,
+          transparent 95%
+        ),
+        linear-gradient(
+          90deg,
+          transparent 65%,
+          $glow 75%,
+          $main 80%,
+          $glow 85%,
+          transparent 95%
+        );
+      background-size: 30px 30px;
+      width: 200%;
+      height: 290%;
+      position: absolute;
+      bottom: -100%;
+      transform: rotateX(-100deg);
+      -webkit-mask-image: linear-gradient(
+        rgba(0, 0, 0, 1),
+        rgba(0, 0, 0, 0) 80%
+      );
+      mask-image: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0) 80%);
+    }
+    .lines {
+      $color: #59c1fe;
+      position: fixed;
+      width: 100%;
+      height: 4em;
+      background: linear-gradient(
+        rgba($color, 0.2) 20%,
+        $color 40%,
+        $color 60%,
+        rgba($color, 0.2) 80%
+      );
+      background-size: 1px 0.5em;
+      box-shadow: 0 0 1em rgba($color, 0.4);
+      transform: translateY(-1em);
+      left: 0;
+    }
+  }
+}
+</style>

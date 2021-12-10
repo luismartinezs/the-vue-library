@@ -1,17 +1,20 @@
 <template>
-  <div class="grid"></div>
-  <div class="lines"></div>
-  <h1>
+  <h1 class="retro-title" :class="{star}">
     <span>{{title}}</span>
     <span>{{title}}</span>
   </h1>
-  <h2>{{subtitle}}</h2>
 </template>
 
 <script setup>
 const props = defineProps({
-  title: String,
-  subtitle: String,
+  title: {
+    type: String,
+    default: 'RETRO'
+  },
+  star: {
+    type: Boolean,
+    default: false
+  }
 });
 </script>
 
@@ -19,24 +22,7 @@ const props = defineProps({
 @import url("https://fonts.googleapis.com/css2?family=Mr+Dafoe&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Exo:wght@900&display=swap");
 
-.lines {
-  $color: #59c1fe;
-  position: fixed;
-  width: 100vw;
-  height: 4em;
-  background: linear-gradient(
-    rgba($color, 0.2) 20%,
-    $color 40%,
-    $color 60%,
-    rgba($color, 0.2) 80%
-  );
-  background-size: 1px 0.5em;
-  box-shadow: 0 0 1em rgba($color, 0.4);
-  transform: translateY(-1em);
-  left: 0;
-}
-
-h1 {
+.retro-title {
   position: relative;
   font-family: "Exo";
   font-size: 9em;
@@ -44,7 +30,8 @@ h1 {
   transform: skew(-15deg);
   letter-spacing: 0.03em;
 
-  &::after {
+  // Star
+  &.star::after {
     content: "";
     position: absolute;
     top: -0.1em;
@@ -57,17 +44,20 @@ h1 {
         rgba(white, 0.05) 60%,
         transparent 80%
       ),
+      // color center-x center-y / width height
       radial-gradient(rgba(white, 0.2) 50%, transparent 60%) 50% 50% / 5% 100%,
       radial-gradient(rgba(white, 0.2) 50%, transparent 60%) 50% 50% / 70% 5%;
     background-repeat: no-repeat;
   }
 
+  // Underneath text layer
   span:first-child {
     display: block;
     text-shadow: 0 0 0.1em #8ba2d0, 0 0 0.2em black, 0 0 5em #165ff3;
     -webkit-text-stroke: 0.06em rgba(black, 0.5);
   }
 
+  // Overlay text layer
   span:last-child {
     position: absolute;
     left: 0;
@@ -81,45 +71,9 @@ h1 {
       #ff61af 75%
     );
     -webkit-text-stroke: 0.01em #94a0b9;
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-}
-
-h2 {
-  font-family: "Mr Dafoe";
-  margin: 0;
-  font-size: 5.5em;
-  margin-top: -0.6em;
-  color: white;
-  text-shadow: 0 0 0.05em #fff, 0 0 0.2em #fe05e1, 0 0 0.3em #fe05e1;
-  transform: rotate(-7deg);
-}
-
-.grid {
-  $main: #7d41e6;
-  $glow: rgba(#2e26ff, 0.4);
-  background: linear-gradient(
-      transparent 65%,
-      $glow 75%,
-      $main 80%,
-      $glow 85%,
-      transparent 95%
-    ),
-    linear-gradient(
-      90deg,
-      transparent 65%,
-      $glow 75%,
-      $main 80%,
-      $glow 85%,
-      transparent 95%
-    );
-  background-size: 30px 30px;
-  width: 200vw;
-  height: 300vh;
-  position: absolute;
-  bottom: -120vh;
-  transform: rotateX(-100deg);
-  -webkit-mask-image: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0) 80%);
 }
 </style>
